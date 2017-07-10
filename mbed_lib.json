@@ -1,0 +1,11 @@
+{
+    "name": "stm-i2s",
+    "target_overrides": {
+        "NUCLEO_F401RE": {
+            "target.device_has_add": ["I2S"]
+        },
+        "UBLOX_C030": {
+            "target.device_has_add": ["I2S"]
+        }
+    }
+}
