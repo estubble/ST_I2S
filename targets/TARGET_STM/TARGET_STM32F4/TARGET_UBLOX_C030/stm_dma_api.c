@@ -20,25 +20,39 @@ void stm_dma_init(void) {
 
     inited = 1;
 
-    // SPI2 - TX
-    dma_map[DMA_SPI2][DMA_TX].dma_stream = DMA1_Stream4;
-    dma_map[DMA_SPI2][DMA_TX].dma_stream_irq = DMA1_Stream4_IRQn;
-    dma_map[DMA_SPI2][DMA_TX].channel_nr = DMA_CHANNEL_0;
-    dma_map[DMA_SPI2][DMA_TX].channel_nr_fd = DMA_CHANNEL_2;
-    dma_map[DMA_SPI2][DMA_TX].busy = 0;
-
-#if NUM_OF_DIRECTIONS > 1
     // SPI2 - RX
     dma_map[DMA_SPI2][DMA_RX].dma_stream = DMA1_Stream3;
     dma_map[DMA_SPI2][DMA_RX].dma_stream_irq = DMA1_Stream3_IRQn;
     dma_map[DMA_SPI2][DMA_RX].channel_nr = DMA_CHANNEL_0;
     dma_map[DMA_SPI2][DMA_RX].channel_nr_fd = DMA_CHANNEL_3;
     dma_map[DMA_SPI2][DMA_RX].busy = 0;
+
+#if NUM_OF_DIRECTIONS == 2
+    // SPI2 - TX
+    dma_map[DMA_SPI2][DMA_TX].dma_stream = DMA1_Stream4;
+    dma_map[DMA_SPI2][DMA_TX].dma_stream_irq = DMA1_Stream4_IRQn;
+    dma_map[DMA_SPI2][DMA_TX].channel_nr = DMA_CHANNEL_0;
+    dma_map[DMA_SPI2][DMA_TX].channel_nr_fd = DMA_CHANNEL_2;
+    dma_map[DMA_SPI2][DMA_TX].busy = 0;
 #endif
 
-    // This code is intended for more devices but we're only
-    // using one on C030
-    MBED_ASSERT(sizeof (dma_map) / sizeof (dma_map[0]) == 1);
+#if NUM_OF_DEVICES == 2
+    // SPI3 - RX
+    dma_map[DMA_SPI3][DMA_RX].dma_stream = DMA1_Stream0;
+    dma_map[DMA_SPI3][DMA_RX].dma_stream_irq = DMA1_Stream0_IRQn;
+    dma_map[DMA_SPI3][DMA_RX].channel_nr = DMA_CHANNEL_0;
+    dma_map[DMA_SPI3][DMA_RX].channel_nr_fd = DMA_CHANNEL_3;
+    dma_map[DMA_SPI3][DMA_RX].busy = 0;
+
+# if NUM_OF_DIRECTIONS == 2
+    // SPI3 - TX
+    dma_map[DMA_SPI3][DMA_TX].dma_stream = DMA1_Stream5;
+    dma_map[DMA_SPI3][DMA_TX].dma_stream_irq = DMA1_Stream5_IRQn;
+    dma_map[DMA_SPI3][DMA_TX].channel_nr = DMA_CHANNEL_0;
+    dma_map[DMA_SPI3][DMA_TX].channel_nr_fd = DMA_CHANNEL_2;
+    dma_map[DMA_SPI3][DMA_TX].busy = 0;
+# endif
+#endif
 
     core_util_critical_section_exit();
 }

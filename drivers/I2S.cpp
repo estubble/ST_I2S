@@ -118,7 +118,7 @@ int I2S::harmonize(I2S &dev_i2s_1, I2S &dev_i2s_2) {
     uint32_t hz2 = dev_i2s_2._hz;
     int8_t ret = i2s_harmonize(&dev_i2s_1._i2s, &hz1, &dev_i2s_2._i2s, &hz2);
 
-    if(ret == 0) {
+    if (ret == 0) {
         dev_i2s_1.audio_frequency(hz1);
         dev_i2s_2.audio_frequency(hz2);
     }
@@ -232,10 +232,10 @@ void I2S::start_transfer(const void *tx_buffer, int tx_length, void *rx_buffer, 
     _irq_tx.callback(&I2S::irq_handler_asynch_tx);
     _irq_rx.callback(&I2S::irq_handler_asynch_rx);
     i2s_transfer(&_i2s,
-                const_cast<void *>(tx_buffer), tx_length, rx_buffer, rx_length,
-                _circular, _priority,
-                _irq_tx.entry(), _irq_rx.entry(),
-                event);
+                 const_cast<void *>(tx_buffer), tx_length, rx_buffer, rx_length,
+                 _circular, _priority,
+                 _irq_tx.entry(), _irq_rx.entry(),
+                 event);
 }
 
 #if TRANSACTION_QUEUE_SIZE_I2S

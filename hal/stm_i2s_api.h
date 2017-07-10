@@ -11,12 +11,12 @@
 #if DEVICE_I2S
 
 #define I2S_EVENT_RX_ERROR         (1 << 1)                                 // 0x2
-#define I2S_EVENT_RX_COMPLETE      (1 << 2)	                                // 0x4
+#define I2S_EVENT_RX_COMPLETE      (1 << 2)                                 // 0x4
 #define I2S_EVENT_RX_OVERFLOW      (1 << 3)                                 // 0x8
 #define I2S_EVENT_RX_HALF_COMPLETE (1 << 4)                                 // 0x10
 
 #define I2S_EVENT_TX_ERROR         (I2S_EVENT_RX_ERROR << 8)                // 0x200
-#define I2S_EVENT_TX_COMPLETE      (I2S_EVENT_RX_COMPLETE << 8)	            // 0x400
+#define I2S_EVENT_TX_COMPLETE      (I2S_EVENT_RX_COMPLETE << 8)             // 0x400
 #define I2S_EVENT_TX_UNDERRUN      (I2S_EVENT_RX_OVERFLOW << 8)             // 0x800
 #define I2S_EVENT_TX_HALF_COMPLETE (I2S_EVENT_RX_HALF_COMPLETE << 8)        // 0x1000
 
@@ -25,8 +25,8 @@
 
 #define I2S_EVENT_INTERNAL_TRANSFER_COMPLETE (1 << 30) // Internal flag to report that an event occurred
 
-#define I2S_TX_EVENT                (0x0) // see DMA_TX
-#define I2S_RX_EVENT                (0x1) // see DMA_RX
+#define I2S_TX_EVENT                                (0x0) // see DMA_TX
+#define I2S_RX_EVENT                                (0x1) // see DMA_RX
 
 typedef enum {
     PHILIPS,
