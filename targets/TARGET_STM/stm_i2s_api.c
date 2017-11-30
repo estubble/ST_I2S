@@ -425,8 +425,12 @@ void i2s_free(i2s_t *obj) {
     pin_function(obj->i2s.pin_wsel, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
     pin_function(obj->i2s.pin_data, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
     pin_function(obj->i2s.pin_sclk, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
-    pin_function(obj->i2s.pin_fdpx, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
-    pin_function(obj->i2s.pin_mclk, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
+    if (obj->i2s.pin_fdpx != NC) {
+        pin_function(obj->i2s.pin_fdpx, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
+    }
+    if (obj->i2s.pin_mclk != NC) {
+        pin_function(obj->i2s.pin_mclk, STM_PIN_DATA(STM_MODE_INPUT, GPIO_NOPULL, 0));
+    }
 
     DEBUG_PRINTF("I2S%u: Free\n", obj->i2s.module+1);
 }
