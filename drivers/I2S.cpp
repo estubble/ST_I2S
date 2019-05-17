@@ -2,7 +2,7 @@
 #include "platform/mbed_critical.h"
 #include "platform/mbed_assert.h"
 
-#if DEVICE_I2S
+#if 1//DEVICE_I2S
 
 I2S* I2S::_owner = NULL;
 SingletonPtr<PlatformMutex> I2S::_mutex; // intentional class level lock!
