@@ -8,7 +8,7 @@
 #include "hal/stm_dma_api.h"
 #include "hal/buffer.h"
 
-#if DEVICE_I2S
+#if 1//DEVICE_I2S
 
 #define I2S_EVENT_RX_ERROR         (1 << 1)                                 // 0x2
 #define I2S_EVENT_RX_COMPLETE      (1 << 2)                                 // 0x4
