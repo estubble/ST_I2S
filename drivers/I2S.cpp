@@ -4,6 +4,8 @@
 
 #if 1//DEVICE_I2S
 
+wooooo
+
 I2S* I2S::_owner = NULL;
 SingletonPtr<PlatformMutex> I2S::_mutex; // intentional class level lock!
 
