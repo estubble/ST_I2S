@@ -3,7 +3,7 @@
 
 #include "platform/platform.h"
 
-#if DEVICE_I2S
+#if 1//DEVICE_I2S
 
 #include "platform/PlatformMutex.h"
 #include "hal/stm_i2s_api.h"
